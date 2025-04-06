@@ -23,7 +23,7 @@ def query_gpt(prompt: str, schema: type[pydantic.BaseModel], retries: int = 3) -
     result = None
     for retry in range(retries):
         completion = client.beta.chat.completions.parse(
-            model="gpt-4o-mini",
+            model="gpt-4o",
             messages=[{"role": "user", "content": prompt}],
             response_format=schema,
         )

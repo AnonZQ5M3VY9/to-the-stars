@@ -2,55 +2,112 @@
 alignment_prompt = """Align the Chinese translation with the English original text, paragraph by paragraph.
 
 Example input:
-{
+{{
     "english_paragraphs": [
-        {
+        {{
             "language": "en",
             "content": "After Mandatory Session, Ryouko headed to a room where, according to the schedule, a specialist would be introducing students to the fundamentals of Spaceflight Engineering. Despite the aspersions she had privately cast on the suggestion earlier, it was probably her only realistic option, and she had been going to this class for over a week, though her friends didn\\'t know it."
-        },
-        {
+        }},
+        {{
             "language": "en",
             "content": "But despite all the interest she should have had for it, she just couldn\\'t get herself interested in the material. It was fun talking about fusion thrusters and elevator ascension in terms of actually *doing* it, but the details of the operating principles, the equations and materials used, just didn\\'t excite her."
-        }
+        }},
+        {{
+            "language": "en",
+            "content": "She wanted to be out there exploring, like the European explorers of old, not the carpenter in the dock putting together the ship."
+        }},
+        {{
+            "language": "en",
+            "content": "Try as she might, she didn\\'t manage to involve herself more than cursorily in the discussion. Instead, she mused on other topics.\\nBeing a magical girl..."
+        }},
+        {{
+            "language": "en",
+            "content": "Many girls dreamed of it, despite all their parents\\' illegal discouragement. After all, you could have one wish for whatever you wanted, and the certainty of being lauded as a hero besides. In exchange for that, many, viewing the sterile desert of their current lives, would gladly pay the price."
+        }}
     ],
     "chinese_paragraphs": [
-        {
+        {{
             "language": "zh",
             "content": "必修科目结束之后，良子换了个教室。根据课表，今天会有一位专家在这里向大家介绍航天工程学的基础知识。尽管她对泪子刚才的建议很是不以为然，但这很可能是她唯一现实的选择了。她早已瞒着朋友们来这里上了一周的课。"
-        },
-        {
+        }},
+        {{
             "language": "zh",
             "content": "尽管她应该对此感兴趣，但她总是对课程内容提不起劲来。对于聚变推进器和太空电梯，她感兴趣的是**借助它们可以做到的事情**，而不是它们本身的运行原理、背后的物理公式，抑或是构成它们的材料技术。她完全无法对这些东西产生热情。"
-        }
+        }},
+        {{
+            "language": "zh",
+            "content": "她所向往的是外出探险，像是古时欧洲的探险家一样，而不是在船坞里做个造船的木工。"
+        }},
+        {{
+            "language": "zh",
+            "content": "在课堂讨论时，她无论怎么尝试都只能草草附和。她的心思早已经跑到了别处。"
+        }},
+        {{
+            "language": "zh",
+            "content": "成为魔法少女……"
+        }},
+        {{
+            "language": "zh",
+            "content": "无论父母们怎么反对——尽管反对是违法的——这仍然是诸多女孩的梦想。毕竟，你可以有一次机会许愿得到你所想要的任何事物，而事后也会被当作英雄看待。面对着自己干涸沙漠一般的无聊生活，许多人都会毫不犹豫地为此付出相应的代价。"
+        }}
     ]
-}
+}}
 
 Example output:
-{
+{{
     "merged_paragraphs": [
-        {
+        {{
             "language": "en",
             "content": "After Mandatory Session, Ryouko headed to a room where, according to the schedule, a specialist would be introducing students to the fundamentals of Spaceflight Engineering. Despite the aspersions she had privately cast on the suggestion earlier, it was probably her only realistic option, and she had been going to this class for over a week, though her friends didn\\'t know it."
-        },
-        {
+        }},
+        {{
             "language": "zh",
             "content": "必修科目结束之后，良子换了个教室。根据课表，今天会有一位专家在这里向大家介绍航天工程学的基础知识。尽管她对泪子刚才的建议很是不以为然，但这很可能是她唯一现实的选择了。她早已瞒着朋友们来这里上了一周的课。"
-        },
-        {
+        }},
+        {{
             "language": "en",
             "content": "But despite all the interest she should have had for it, she just couldn\\'t get herself interested in the material. It was fun talking about fusion thrusters and elevator ascension in terms of actually *doing* it, but the details of the operating principles, the equations and materials used, just didn\\'t excite her."
-        },
-        {
+        }},
+        {{
             "language": "zh",
             "content": "尽管她应该对此感兴趣，但她总是对课程内容提不起劲来。对于聚变推进器和太空电梯，她感兴趣的是**借助它们可以做到的事情**，而不是它们本身的运行原理、背后的物理公式，抑或是构成它们的材料技术。她完全无法对这些东西产生热情。"
-        }
+        }},
+        {{
+            "language": "en",
+            "content": "She wanted to be out there exploring, like the European explorers of old, not the carpenter in the dock putting together the ship."
+        }},
+        {{
+            "language": "zh",
+            "content": "她所向往的是外出探险，像是古时欧洲的探险家一样，而不是在船坞里做个造船的木工。"
+        }},
+        {{
+            "language": "en",
+            "content": "Try as she might, she didn\\'t manage to involve herself more than cursorily in the discussion. Instead, she mused on other topics.\\nBeing a magical girl..."
+        }},
+        {{
+            "language": "zh",
+            "content": "在课堂讨论时，她无论怎么尝试都只能草草附和。她的心思早已经跑到了别处。"
+        }},
+        {{
+            "language": "zh",
+            "content": "成为魔法少女……"
+        }},
+        {{
+            "language": "en",
+            "content": "Many girls dreamed of it, despite all their parents\\' illegal discouragement. After all, you could have one wish for whatever you wanted, and the certainty of being lauded as a hero besides. In exchange for that, many, viewing the sterile desert of their current lives, would gladly pay the price."
+        }},
+        {{
+            "language": "zh",
+            "content": "无论父母们怎么反对——尽管反对是违法的——这仍然是诸多女孩的梦想。毕竟，你可以有一次机会许愿得到你所想要的任何事物，而事后也会被当作英雄看待。面对着自己干涸沙漠一般的无聊生活，许多人都会毫不犹豫地为此付出相应的代价。"
+        }}
     ]
-}
+}}
 
 1. Your task is to merge the English list of paragraphs and the Chinese list into one, interleaving the two lists. Each English paragraph should proceed its corresponding Chinese one.
 2. Interleave at the most granular level possible, typically at the paragraph level. It's possible that multiple English paragraphs correspond to a single Chinese paragraph, or vice versa; in this case, you are allowed to have multiple English paragraphs between two Chinese paragraphs, or vice versa.
 3. You should NEVER change or merge the content of the paragraphs or their metadata or formatting. All JSON objects within the lists should be kept strictly as is.
 4. You should output a JSON dict[str, list[dict[str, str]]] with the only key being "merged_paragraphs" and the value being the merged list of paragraphs.
+5. ABSOLUTELY ensure the completeness of the content; do NOT just return the first N paragraphs.
 
 Input:
 {input_paragraphs}
@@ -61,15 +118,16 @@ Output:
 
 # Translation improvement prompt
 translation_improvement_prompt = """你需对一篇英文小说选段的中文翻译进行改进。具体要求：
-1. 语言流畅自然，符合中文表达习惯，没有翻译腔；
+1. 语言流畅自然，符合中文表达习惯，没有翻译腔。为达成这一点可对初始译文进行任意改写。
 2. 术语、人名、专有名词前后一致。
-3. 确保翻译的准确性和忠实性，不添加或删除任何原文内容。
+3. 确保翻译的准确性和忠实性，相比英文原文不得添加或删除内容，但在语序、用词等方面可进行调整。
 4. 保留所有的 Markdown 格式。
 5. 输入格式为 JSON 对象，包含文章选段中的一串连续段落，按照原文顺序排列，英文原段和中文翻译段交替出现（除非出现一对多的特殊情况）。字段如下：
     - "paragraphs": list[dict[str, str]]
         - "language": str, 语言标识符，取值为 "en" 或 "zh"
         - "content": str, 段落内容
 6. 输出格式为 JSON 对象，字段完全同上。你应对 "language" 为 "zh" 的段落进行内容改进（即改写其 "content" 字段），而 "language" 为 "en" 的段落必须保持不变。段落的数量和顺序也应保持绝对不变。换句话说，允许进行的修改有且仅有对中文段落的 "content" 字段进行改写。
+7. 绝对确保译文内容的完整性，不得只返回前 N 段。
 
 人名专有名词译名对照表：
 {glossary}
