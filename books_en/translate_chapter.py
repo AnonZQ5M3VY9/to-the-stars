@@ -8,6 +8,10 @@ from utils import (
     query_gpt,
     AlignmentResult,
     TranslationImprovementResult,
+    default_context_window,
+    default_model_name,
+    default_encoding_name,
+    num_tokens,
 )
 
 import os
@@ -18,11 +22,15 @@ import hashlib
 en_chapter_dir = "./"
 zh_chapter_dir = "../books/"
 
+chunks_per_chapter = 8
+
 exemplar_chapter_nums = [
     (2, 23)
 ]
 
+
 os.makedirs("log", exist_ok=True)
+
 
 def find_file(dir: str, filename_prefix: str):
     for file in os.listdir(dir):
@@ -30,6 +38,7 @@ def find_file(dir: str, filename_prefix: str):
             return os.path.join(dir, file)
     return None
                 
+
 def align_paragraphs(en_text: str, zh_text: str) -> list[dict[str, str]]:
     en_paragraphs = re.split(r"\n[> ]*\n", en_text)
     en_paragraphs = [p.strip() for p in en_paragraphs if p.strip()]
@@ -67,6 +76,7 @@ def align_paragraphs(en_text: str, zh_text: str) -> list[dict[str, str]]:
         })
     
     return merged_paragraphs
+
 
 def polish_translation(en_text: str, zh_text: str) -> str:
     ref_texts = {}
@@ -108,13 +118,16 @@ def polish_translation(en_text: str, zh_text: str) -> str:
     print(f"翻译后的中英对照结果已保存至：log/translation_improvement_results_{all_paragraphs_hash}.md")
     return zh_paragraphs
 
+
 def new_translation(en_text: str) -> str:
     raise NotImplementedError("从零翻译尚未实现")
+
 
 def find_en_zh_paths(volume_num: int, chapter_num: int) -> tuple[str, str]:
     en_path = find_file(os.path.join(en_chapter_dir, str(volume_num).zfill(2)), str(chapter_num).zfill(3))
     zh_path = find_file(os.path.join(zh_chapter_dir, str(volume_num).zfill(2)), str(chapter_num).zfill(3))
     return en_path, zh_path
+
 
 def translate_chapter(volume_num: int, chapter_num: int, inplace: bool = False):
     en_path, zh_path = find_en_zh_paths(volume_num, chapter_num)
@@ -149,6 +162,7 @@ def translate_chapter(volume_num: int, chapter_num: int, inplace: bool = False):
     
     print(f"翻译结果已保存至：{save_path}")
     
+
 if __name__ == "__main__":
     volume_num = int(input("请输入翻译卷号（例：《小玛德莱娜》对应02）："))
     chapter_num = int(input("请输入翻译章节号（例：《小玛德莱娜》对应033）："))
