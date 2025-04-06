@@ -1,0 +1,4 @@
+**/*.md
+
+# Exception for the README.md under the root directory only
+!README.md
